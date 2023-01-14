@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 //these are implementations of some of the practice functions suggested at the end of chapter 8 of the book
-//I intend to do the text interface one as well. That will be most likely day 12.
+//I intend to do the text interface one as well. That will be most likely day 13.
 
 fn main() {
     let mut median_vec = vec![583,72,896,280,829,456,256,325,916,50,810,218,135,634,634,286,216,30,814];

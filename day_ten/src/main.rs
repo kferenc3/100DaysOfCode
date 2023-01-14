@@ -67,7 +67,7 @@ fn main() {
 
     //Stings are stored as bytes so indexing one them wouldn't work e.g hello[0] wouldn't return h, but the corresponding byte
 
-    //iteration works thoug
+    //iteration works though
     for c in "Зд".chars() {
         println!("{c}");
     }
