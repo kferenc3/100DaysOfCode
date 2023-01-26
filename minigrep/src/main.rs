@@ -12,13 +12,15 @@
 
 //day 24: Developing with tests, environment variables, stderr
 
+//day 26: modifications on the code to use iterators and closures
+
 use std::{env, process};
 use minigrep::Config;
 
 fn main() {
-    let args: Vec<String> = env::args().collect(); //env::args creates an iterator of the cmd args. collect turns them into a collection (in this case a vec)
+    //let args: Vec<String> = env::args().collect(); //env::args creates an iterator of the cmd args. collect turns them into a collection (in this case a vec)
     
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {  //enf::args returns an iterator
         eprintln!("Problem parsing arguments: {err}"); //erpintln prints to stderr instead of stdout
         process::exit(1);
     });
