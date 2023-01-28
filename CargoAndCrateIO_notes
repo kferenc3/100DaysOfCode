@@ -1,0 +1,32 @@
+Day 27, 
+These are my notes from chapter 14
+
+Profile configuration in cargo.toml:
+[profile.dev]
+key = value
+
+[profile.release]
+key = value
+Profile options: https://doc.rust-lang.org/cargo/reference/profiles.html
+
+/// marks documentation comments and supports markdown syntax. cargo doc --open will open it in HTML
+
+Commonly used sections:
+#Example
+#Panics
+#Errors
+#Safety
+
+//! Documentation comment about the crate in general
+
+Reexporting:
+pub use self::module::function --> This way a function can be used publically without having to know the exact module structure
+
+Mandatory information for packages:
+[package]
+name = ""
+description = ""
+license = ""
+
+Deleting from crates.io is not possible, but it is possible to deprecate versions making sure no future crates can depend on it:
+cargo yank --ver0.1.0
