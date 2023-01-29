@@ -8,6 +8,6 @@ mod tests {
 
     #[test]
     fn it_works_two() {
-        assert_eq!(result, 4);
+        assert_eq!(add_two(2), 4);
     }
 }
