@@ -42,7 +42,7 @@ impl Config{
         let arguments: Vec<String> = args.collect();
 
         let env_active = match env::var("HVR_TESTENV") {
-            Ok(s) => s == "1",
+            Ok(s) if s == "1" => true,
             _ => false,
         };
         
