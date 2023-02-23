@@ -2,40 +2,40 @@ use std::fs::{self, OpenOptions};
 use std::env;
 use reqwest::header::COOKIE;
 
-#[derive(Debug)]
-pub struct Config {
-    year: u32,
-    day: u32,
-    d_only: String,
-}
+// #[derive(Debug)]
+// pub struct Config {
+//     year: u32,
+//     day: u32,
+//     d_only: String,
+// }
 
-impl Config {
-    pub fn build(mut args: impl Iterator<Item = String>,
-) -> Result<Config, &'static str> {
-    args.next();
+// impl Config {
+//     pub fn build(mut args: impl Iterator<Item = String>,
+// ) -> Result<Config, &'static str> {
+//     args.next();
 
-    let year = match args.next() {
-        Some(arg) => arg.parse::<u32>().unwrap(),
-        None => return Err("Invalid arguments"),
-    };
+//     let year = match args.next() {
+//         Some(arg) => arg.parse::<u32>().unwrap(),
+//         None => return Err("Invalid arguments"),
+//     };
     
-    let day = match args.next() {
-        Some(arg) => arg.parse::<u32>().unwrap(),
-        None => return Err("Invalid argument"),
-    };
+//     let day = match args.next() {
+//         Some(arg) => arg.parse::<u32>().unwrap(),
+//         None => return Err("Invalid argument"),
+//     };
 
-    let d_only = match args.next() {
-        Some(arg) => arg,
-        None => return Err("Invalid argument"),
-    };
+//     let d_only = match args.next() {
+//         Some(arg) => arg,
+//         None => return Err("Invalid argument"),
+//     };
 
-    Ok(Config {
-        year,
-        day,
-        d_only,
-    })
+//     Ok(Config {
+//         year,
+//         day,
+//         d_only,
+//     })
 
-}}
+// }}
     
 pub fn datagetter(year: u32, day: u32) -> String {
     let fname = "inputdata_day".to_string() + &day.to_string();

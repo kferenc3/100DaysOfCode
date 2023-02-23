@@ -35,19 +35,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn testdata1() {
+    fn day1test1() {
         assert_eq!(0,part_i(&String::from("(())")));
         assert_eq!(1,part_ii(&String::from(")")));   
     }
 
     #[test]
-    fn testdata2() {
+    fn day1test2() {
         assert_eq!(3,part_i(&String::from("(()(()(")));
         assert_eq!(5,part_ii(&String::from("()())")));    
     }
 
     #[test]
-    fn testdata3() {
+    fn day1test3() {
         assert_eq!(-3,part_i(&String::from(")())())")));
         assert_eq!(1,part_ii(&String::from(")())())")));    
     }
