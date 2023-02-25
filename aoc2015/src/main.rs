@@ -4,6 +4,8 @@ use aoc2015::{
     solutions::{
         day1,
         day2,
+        day3,
+
     },
     helpers::*,
 };
@@ -16,8 +18,8 @@ fn main() {
     //});
 
     //println!("{:?}", config);
-    let input = datagetter(2015, 2);
-    println!("Part I solution: {}", day2::part_i(&input));
-    println!("Part II solution: {}", day2::part_ii(&input));
+    let input = datagetter(2015, 3);
+    println!("Part I solution: {}", day3::part_i(&input));
+    println!("Part II solution: {}", day3::part_ii(&input));
 }
 
