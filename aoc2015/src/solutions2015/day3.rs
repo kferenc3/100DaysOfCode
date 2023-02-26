@@ -1,4 +1,8 @@
-pub fn part_i(i: &String) -> usize { 
+pub fn day3solver(i: &String) -> (String, String){
+    (part_i(i).to_string(), part_ii(i).to_string())
+}
+
+fn part_i(i: &String) -> i32 { 
     let mut santa = (0,0);
     let mut visited: Vec<(i32,i32)> = Vec::new();
     visited.push(santa);
@@ -15,9 +19,10 @@ pub fn part_i(i: &String) -> usize {
     }
     visited.sort();
     visited.dedup();
-    visited.len()
+    visited.len() as i32
 }
-pub fn part_ii(i: &String) -> usize {
+
+fn part_ii(i: &String) -> i32 {
     let mut santa = (0,0);
     let mut robo_santa = (0,0);
     let mut visited: Vec<(i32,i32)> = Vec::new();
@@ -52,7 +57,7 @@ pub fn part_ii(i: &String) -> usize {
 
     visited.sort();
     visited.dedup();
-    visited.len()
+    visited.len() as i32
 }
 
 #[cfg(test)]
