@@ -1,3 +1,7 @@
+pub fn day2solver(i: &String) -> (String, String){
+    (part_i(i).to_string(), part_ii(i).to_string())
+}
+
 #[derive(Debug)]
 struct Present {
     l: i32,
@@ -85,7 +89,7 @@ fn construct_cubes(i: &String) -> Vec<Present> {
 }
 
 
-pub fn part_i(i: &String) -> i32 {
+fn part_i(i: &String) -> i32 {
 
     let c: Vec<Present> = construct_cubes(i);
     let mut wrapping_paper = 0;
@@ -97,7 +101,7 @@ pub fn part_i(i: &String) -> i32 {
         
     }
 
-pub fn part_ii(i: &String) -> i32 {
+fn part_ii(i: &String) -> i32 {
     let c: Vec<Present> = construct_cubes(i);
     let mut ribbon = 0;
 
