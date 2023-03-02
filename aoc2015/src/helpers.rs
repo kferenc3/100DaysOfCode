@@ -6,6 +6,8 @@ use crate::solutions2015::{
     day2,
     day3,
     day4,
+    day5,
+    day6
 };
 
  #[derive(Debug)]
@@ -55,14 +57,16 @@ pub fn solver(year: u32, day: u32) -> Result<(String, String), &'static str> {
         2 => Ok(day2::day2solver(&input)),
         3 => Ok(day3::day3solver(&input)),
         4 => Ok(day4::day4solver(&input)),
+        5 => Ok(day5::day5solver(&input)),
+        6 => Ok(day6::day6solver(&input)),
         _ => return Err("Invalid day"),
     }
     
 }
 
 fn datagetter(year: u32, day: u32) -> String {
-    let fname = "inputdata_day".to_string() + &day.to_string();
-    let url = "https://adventofcode.com/".to_string() + &year.to_string() + "/day/" + &day.to_string() + "/input";
+    let fname = format!("inputdata_day{}", &day.to_string());
+    let url = format!("https://adventofcode.com/{}/day/{}/input", &year.to_string(), &day.to_string());
     
     
     match OpenOptions::new().read(true).open(&fname) {

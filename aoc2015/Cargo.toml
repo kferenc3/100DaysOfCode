@@ -9,3 +9,5 @@ edition = "2021"
 reqwest = { version = "0.11.14", features = ["json", "blocking"] }
 md5 = "0.7.0"
 rust-crypto = "^0.2"
+fancy-regex = "0.11.0"
+array2d = "0.3.0"
