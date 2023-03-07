@@ -18,6 +18,7 @@ dependencies = [
  "fancy-regex",
  "md5",
  "ndarray",
+ "regex",
  "reqwest",
  "rust-crypto",
 ]
