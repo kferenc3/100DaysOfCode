@@ -1,8 +1,8 @@
-pub fn day1solver(i: &String) -> (String, String){
+pub fn day1solver(i: &str) -> (String, String){
     (part_i(i).to_string(), part_ii(i).to_string())
 }
 
-fn part_i(i: &String) -> i32 {
+fn part_i(i: &str) -> i32 {
     let mut f = 0;
 
     for c in i.chars() {
@@ -15,7 +15,7 @@ fn part_i(i: &String) -> i32 {
     f
 }
 
-fn part_ii(i: &String) -> i32 {
+fn part_ii(i: &str) -> i32 {
     let mut f = 0;
     let mut counter = 1;
 

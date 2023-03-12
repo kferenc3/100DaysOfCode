@@ -1,4 +1,4 @@
-pub fn day2solver(i: &String) -> (String, String){
+pub fn day2solver(i: &str) -> (String, String){
     (part_i(i).to_string(), part_ii(i).to_string())
 }
 
@@ -23,11 +23,8 @@ impl Present {
     }
 
     fn smallest_side(&self) -> i32 {
-        let mut sides = Vec::new();
-        sides.push(self.l * self.w); 
-        sides.push(self.w * self.h);
-        sides.push(self.h * self.l);
-
+        let sides = vec![self.l * self.w, self.w * self.h, self.h * self.l];
+        
         let min_val = sides.iter().min();
 
         match min_val {
@@ -55,9 +52,9 @@ impl Present {
 
 }
 
-fn construct_cubes(i: &String) -> Vec<Present> {
-    let nums = i.replace("\n", "x");
-    let mut nums_iter = nums.split("x").into_iter().peekable();
+fn construct_cubes(i: &str) -> Vec<Present> {
+    let nums = i.replace('\n', "x");
+    let mut nums_iter = nums.split('x').into_iter().peekable();
     let mut cubes: Vec<Present> = Vec::new();
 
     loop {
@@ -78,7 +75,7 @@ fn construct_cubes(i: &String) -> Vec<Present> {
         cubes.push(Present::new(l, w, h));
         
         match nums_iter.peek() {
-            Some(n) if n.len() == 0 => break,
+            Some(n) if n.is_empty() => break,
             Some(_) => {},
             None => break,
         }
@@ -89,7 +86,7 @@ fn construct_cubes(i: &String) -> Vec<Present> {
 }
 
 
-fn part_i(i: &String) -> i32 {
+fn part_i(i: &str) -> i32 {
 
     let c: Vec<Present> = construct_cubes(i);
     let mut wrapping_paper = 0;
@@ -101,7 +98,7 @@ fn part_i(i: &String) -> i32 {
         
     }
 
-fn part_ii(i: &String) -> i32 {
+fn part_ii(i: &str) -> i32 {
     let c: Vec<Present> = construct_cubes(i);
     let mut ribbon = 0;
 
