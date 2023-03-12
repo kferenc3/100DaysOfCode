@@ -1,21 +1,21 @@
 use std::collections::HashMap;
 use regex::Regex;
 
-pub fn day7solver(i: &String) -> (String, String){
+pub fn day7solver(i: &str) -> (String, String){
     (part_i(i, "a").to_string(), part_ii(i, "a").to_string())
 }
 
-fn part_i(i: &String, goal: &str) -> u16 {
-    return signal_calculator(i, goal, None);
+fn part_i(i: &str, goal: &str) -> u16 {
+    signal_calculator(i, goal, None)
 }
-fn part_ii(i: &String, goal: &str) -> u16 {
+fn part_ii(i: &str, goal: &str) -> u16 {
     let b = signal_calculator(i, goal, None);
     let mut v: HashMap<&str, Option<u16>> = HashMap::new();
     v.insert("b", Some(b));
-    return signal_calculator(i, goal, Some(v));
+    signal_calculator(i, goal, Some(v))
 }
 
-fn signal_calculator(i: &String, goal: &str, v: Option<HashMap<&str, Option<u16>>>) -> u16 {
+fn signal_calculator(i: &str, goal: &str, v: Option<HashMap<&str, Option<u16>>>) -> u16 {
     
     let mut valuemap = match v {
         Some(i) => i,
@@ -45,16 +45,12 @@ fn signal_calculator(i: &String, goal: &str, v: Option<HashMap<&str, Option<u16>
                 let captures = re3.captures(l).unwrap();
                 var1 = captures.name("var1").unwrap().as_str();
                 dest = captures.name("dest").unwrap().as_str();
-                if dest == "b" && !valuemap.contains_key(dest){
+                if dest != "b" || !valuemap.contains_key(dest) {
                     match var1.parse::<u16>() {
                         Ok(i) => valuemap.insert(dest, Some(i)),
                         Err(_) => valuemap.insert(dest, None),
                     };    
-                } else if dest != "b" {
-                match var1.parse::<u16>() {
-                    Ok(i) => valuemap.insert(dest, Some(i)),
-                    Err(_) => valuemap.insert(dest, None),
-                };}
+                }; 
             } else if line.len() == 4 {
                 let captures = re4.captures(l).unwrap();
                 var1 = captures.name("var1").unwrap().as_str();
@@ -70,14 +66,8 @@ fn signal_calculator(i: &String, goal: &str, v: Option<HashMap<&str, Option<u16>
                 valuemap.insert(dest, None);
             }
 
-            var1_num = match var1.parse::<u16>() {
-                Ok(i) => i,
-                Err(_) => 0,
-            };
-            var2_num = match var2.parse::<u16>() {
-                Ok(i) => i,
-                Err(_) => 0,
-            };
+            var1_num += var1.parse::<u16>().unwrap_or(0);
+            var2_num += var2.parse::<u16>().unwrap_or(0);
 
             if op.is_empty() && var2.is_empty() && valuemap.contains_key(var1) {
                 match valuemap[var1] {

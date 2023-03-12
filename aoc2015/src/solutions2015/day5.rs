@@ -1,10 +1,10 @@
 use fancy_regex::Regex;
 
-pub fn day5solver(i: &String) -> (String, String){
+pub fn day5solver(i: &str) -> (String, String){
     (part_i(i).to_string(), part_ii(i).to_string())
 }
 
-fn part_i(i: &String) -> i32 {
+fn part_i(i: &str) -> i32 {
     
     let lines = i.lines();
     
@@ -14,23 +14,11 @@ fn part_i(i: &String) -> i32 {
     let mut nice = 0;
     
     for line in lines {
-        let vowel_count = if vowels.captures_iter(line).count() >= 3 {
-            true
-        } else {
-            false
-        };
+        let vowel_count = vowels.captures_iter(line).count() >= 3;
     
-        let nono_count = if nono.captures_iter(line).count() == 0 {
-            true
-        } else {
-            false
-        };
+        let nono_count = nono.captures_iter(line).count() == 0;
     
-        let duplicate_count = if dupes.captures_iter(line).count() >= 1 {
-            true
-        } else {
-            false
-        };
+        let duplicate_count = dupes.captures_iter(line).count() >= 1;
 
         if vowel_count && nono_count && duplicate_count {
             nice += 1;
@@ -42,7 +30,7 @@ fn part_i(i: &String) -> i32 {
 
 }
 
-fn part_ii(i: &String) -> i32 {
+fn part_ii(i: &str) -> i32 {
         
     let lines = i.lines();
     
@@ -51,17 +39,9 @@ fn part_ii(i: &String) -> i32 {
     let mut nice = 0;
     
     for line in lines {
-        let r1_count = if r1.captures_iter(line).count() >= 1 {
-            true
-        } else {
-            false
-        };
+        let r1_count = r1.captures_iter(line).count() >= 1;
     
-        let r2_count = if r2.captures_iter(line).count() >= 1 {
-            true
-        } else {
-            false
-        };
+        let r2_count = r2.captures_iter(line).count() >= 1;
 
         if r1_count && r2_count {
             nice += 1;

@@ -1,6 +1,6 @@
 use ndarray::Array2;
 
-pub fn day6solver(i: &String) -> (String, String){
+pub fn day6solver(i: &str) -> (String, String){
     (part_i(i, 1000).to_string(), part_ii(i, 1000).to_string())
 }
 
@@ -37,7 +37,7 @@ impl Instruction {
         
         
         Instruction {
-            toggle: toggle,
+            toggle,
             row_ft: (c1[0].parse::<i32>().unwrap(),c2[0].parse::<i32>().unwrap()),
             col_ft: (c1[1].parse::<i32>().unwrap(),c2[1].parse::<i32>().unwrap()),
         }
@@ -90,7 +90,7 @@ impl Instruction {
 
 }
 
-fn part_i(i: &String, gridsize: usize) -> i32 {
+fn part_i(i: &str, gridsize: usize) -> i32 {
     
     let mut grid = Array2::<i32>::zeros((gridsize,gridsize)); 
 
@@ -102,7 +102,7 @@ fn part_i(i: &String, gridsize: usize) -> i32 {
 }
 
 
-fn part_ii(i: &String, gridsize: usize) -> i32 {
+fn part_ii(i: &str, gridsize: usize) -> i32 {
 
     let mut grid = Array2::<i32>::zeros((gridsize,gridsize)); 
 

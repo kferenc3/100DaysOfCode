@@ -7,7 +7,7 @@ use crypto::md5::Md5;
 use crypto::digest::Digest;
 
 
-pub fn day4solver(i: &String) -> (String, String){
+pub fn day4solver(i: &str) -> (String, String){
     (part_i_alter(i, Some(5)).to_string(), part_i_alter(i, Some(6)).to_string())
 }
 
@@ -29,7 +29,7 @@ pub fn day4solver(i: &String) -> (String, String){
 //     }
 // }
 
-fn part_i_alter(i: &String, n: Option<usize>) -> i32 {
+fn part_i_alter(i: &str, n: Option<usize>) -> i32 {
     let nulls = match n {
         Some(n) => n,
         _ => 5,
@@ -38,7 +38,7 @@ fn part_i_alter(i: &String, n: Option<usize>) -> i32 {
     let mut d = 0;
     let mut hash = Md5::new();
     loop {
-        hash.input_str(&format!("{}{}", i.trim_end(), d.to_string()));
+        hash.input_str(&format!("{}{}", i.trim_end(), d));
 
         if hash.result_str().starts_with(&"0".repeat(nulls)) {
             return d;
