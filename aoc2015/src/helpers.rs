@@ -9,6 +9,7 @@ use crate::solutions2015::{
     day5,
     day6,
     day7,
+    day8,
 };
 
  #[derive(Debug)]
@@ -33,13 +34,10 @@ use crate::solutions2015::{
         _ => 2015,
     };
 
-    let d_only = match args.next() {
-        Some(arg) if arg == "-d" => true,
-        _ => false,
-    };
+    let d_only = matches!(args.next(), Some(arg) if arg == "-d");
 
     if day > 25 && day < 1 {
-        return Err("Day must be between 1 and 25")
+        Err("Day must be between 1 and 25")
     } else {
         Ok(Config {
             day,
@@ -61,7 +59,8 @@ pub fn solver(year: u32, day: u32) -> Result<(String, String), &'static str> {
         5 => Ok(day5::day5solver(&input)),
         6 => Ok(day6::day6solver(&input)),
         7 => Ok(day7::day7solver(&input)),
-        _ => return Err("Invalid day"),
+        8 => Ok(day8::day8solver(&input)),
+        _ => Err("Invalid day"),
     }
     
 }
@@ -72,9 +71,9 @@ fn datagetter(year: u32, day: u32) -> String {
     
     
     match OpenOptions::new().read(true).open(&fname) {
-        Ok(_) => return fs::read_to_string(fname).expect("Unable to read file"),
-        Err(_) => return get_request(&url, &fname),
-    };
+        Ok(_) => fs::read_to_string(fname).expect("Unable to read file"),
+        Err(_) => get_request(&url, &fname),
+    }
 }
 
 
@@ -96,5 +95,5 @@ fn get_request(u: &str, f: &str) -> String {
         Err(_) => println!("Error!"),
     }
 
-    return fs::read_to_string(f).expect("Unable to read newly created file")
+    fs::read_to_string(f).expect("Unable to read newly created file")
 }
