@@ -10,6 +10,7 @@ use crate::solutions2015::{
     day6,
     day7,
     day8,
+    day9,
 };
 
  #[derive(Debug)]
@@ -60,6 +61,7 @@ pub fn solver(year: u32, day: u32) -> Result<(String, String), &'static str> {
         6 => Ok(day6::day6solver(&input)),
         7 => Ok(day7::day7solver(&input)),
         8 => Ok(day8::day8solver(&input)),
+        9 => Ok(day9::day9solver(&input)),
         _ => Err("Invalid day"),
     }
     
